@@ -1,0 +1,27 @@
+{% extends "layout.html" %}
+
+{% block title %}
+sos sos!!!
+{% endblock %}
+
+{% block content %}
+
+<h1 class="text-center">SOS</h1>
+
+<h2> 
+    {% if form.instance.pk %} 
+        Edit SoS 
+    {% else %} 
+        Create SoS 
+    {% endif %} 
+</h2>
+
+<form method="post" enctype="multipart/form-data" class="form">
+    {% csrf_token %}
+    {{ form.as_p }} 
+    <button class="btn btn-warning" type="submit">Submit</button>
+</form>
+
+<a href="{% url 'sos_list' %}">Back to SoS list</a>
+
+{% endblock %}

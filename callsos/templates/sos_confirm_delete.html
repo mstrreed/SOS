@@ -1,0 +1,18 @@
+{% extends "layout.html" %}
+
+{% block title %}
+sos sos!!!
+{% endblock %}
+
+{% block content %}
+<h1 class="text-center">Are you sure to delete your SoS call ?</h1>
+
+<form method="post">
+    {% csrf_token %}
+    <button class="btn btn-danger">Delete</button>
+    <a class="btn btn-success"href="{% url 'sos_list' %}">Cancel</a>
+
+</form>
+
+
+{% endblock %}

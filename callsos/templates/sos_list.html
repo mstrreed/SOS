@@ -1,0 +1,32 @@
+{% extends "layout.html" %}
+
+{% block title %}
+sos sos!!!
+{% endblock %}
+
+{% block content %}
+<h1 class="text-center">SOS</h1>
+
+<a class="btn btn-primary mb-4" href="{% url 'sos_create' %}">Call SOS</a>
+
+<div class="container row gap-3">
+
+    {% for so in soss %}
+    
+    <div class="card" style="width: 18rem;">
+        <img src="{{so.photo.url}}" class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 class="card-title">{{so.user.username}}</h5>
+          <p class="card-text">{{so.text}}</p>
+          {%if so.user == user%}
+          <a href="{% url 'sos_edit' so.id %}" class="btn btn-primary">Edit</a>
+          <a href="{% url 'sos_delete' so.id %}" class="btn btn-primary">Delete</a>
+          {% endif %}
+        </div>
+      </div>
+    
+    {% endfor %}
+
+</div>
+
+{% endblock %}
